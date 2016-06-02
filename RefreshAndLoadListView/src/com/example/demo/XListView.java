@@ -34,6 +34,9 @@ public class XListView extends ListView implements OnScrollListener {
 	private int mScrollBack;
 	private final static int SCROLLBACK_HEADER = 0;
 	private final static int SCROLLBACK_FOOTER = 1;
+	
+	private boolean enableRefresh=false;
+	private boolean enableLoad=false;
 
 	public XListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -80,11 +83,11 @@ public class XListView extends ListView implements OnScrollListener {
 			int currentY = (int) (ev.getRawY() - lastY);
 			lastY = (int) ev.getRawY();
 			if ((currentY >= 0 || headView.getVisiableHeight() > 0)
-					&& getFirstVisiblePosition() == 0) {
+					&& getFirstVisiblePosition() == 0&&enableRefresh) {
 				updateHeadHeight(currentY / OFFSET_RADIO);
 				
 			} else if ((getLastVisiblePosition() == totalNumView - 1)
-					&& currentY < 0) {
+					&& currentY < 0&&enableLoad) {
 				updateFootHeight(-(currentY / OFFSET_RADIO));
 
 			}
@@ -228,5 +231,20 @@ public class XListView extends ListView implements OnScrollListener {
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void enableRefresh(boolean refresh){
+		
+		enableRefresh=refresh;
+	}
+	
+	public void enableLoad(boolean isload){
+		enableLoad=isload;
+		if(isload){
+			footView.showFoot();
+		}else{
+			footView.hideFoot();
+		}
+		
 	}
 }

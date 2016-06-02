@@ -21,7 +21,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		lv = (XListView) findViewById(R.id.lv);
 		initData();
-
+        lv.enableLoad(true);
+        lv.enableRefresh(true);
 		lv.setPullAndLoadListener(new PullAndLoadListener() {
 
 			@Override

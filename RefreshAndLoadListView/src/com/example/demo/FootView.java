@@ -87,7 +87,7 @@ public class FootView extends LinearLayout {
 	}
 	
 	public void hideFoot(){
-		LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0);
+		LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
 		footViewContent.setLayoutParams(layoutParams);
 		
 	}
